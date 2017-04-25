@@ -11,7 +11,7 @@ from flask_sqlalchemy import SQLAlchemy
 
 # 简单的配置 app
 app = Flask(__name__)
-app.jinja_env.add_extension('jinja2.ext.loopcontrols')
+app.jinja_env.add_extension('jinja2.ext.loopcontrols')      # 让jinja2 支持 break continue 语句
 app.config.from_pyfile('app.conf')
 app.secret_key = 'nowcoder'
 db = SQLAlchemy(app)
