@@ -5,3 +5,9 @@
 # @Site    : 
 # @File    : __init__.py
 # @Software: PyCharm Community Edition
+
+from flask import Flask
+
+app = Flask(__name__)
+
+from instagram import views, models

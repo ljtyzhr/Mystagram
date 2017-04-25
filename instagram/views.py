@@ -5,3 +5,10 @@
 # @Site    : 
 # @File    : views.py
 # @Software: PyCharm Community Edition
+
+
+from instagram import app
+
+@app.route('/')
+def index():
+    return "Hello Index!"
