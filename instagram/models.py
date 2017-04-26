@@ -11,6 +11,7 @@ import random
 from instagram import db
 from datetime import datetime
 
+
 # 用户model
 class User(db.Model):
     #__tablename__ = 'myuser' 指定表名字
@@ -18,7 +19,7 @@ class User(db.Model):
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     username = db.Column(db.String(80), unique=True)
     password = db.Column(db.String(32))
-    salt = db.Column(db.String(32))
+    salt = db.Column(db.String(32))                                     # MD5密码加盐
     head_url = db.Column(db.String(256))
     images = db.relationship('Image', backref='user', lazy='dynamic')   # 关联到Image表上去
 
