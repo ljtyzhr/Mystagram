@@ -69,4 +69,17 @@ def reg():
     if user != None:
         return redirect_with_msg('/regloginpage', u'用户名已存在', 'reglogin')
 
-    # 请大家考虑更多边界问题
+    salt = ''.join(random.sample('0123456789abcdefghigklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ', 10))
+    m = hashlib.md5()
+    m.update(password + salt)
+    password = m.hexdigest()
+    user = User(username, password, salt)
+    db.session.add(user)
+    db.session.commit()
+    # login_user(user)
+
+    next = request.values.get('next')
+    if next != None and next.startswith('/') > 0:
+        return redirect(next)
+    return redirect('/')
+
